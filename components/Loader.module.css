@@ -1,0 +1,82 @@
+.loaderOverlay {
+  position: fixed;
+  z-index: 9999;
+  inset: 0;
+  pointer-events: none;
+  background: #000;
+  animation: overlayFade 0.3s linear 2.2s forwards;
+}
+
+@keyframes overlayFade {
+  to {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.curtain {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: #000;
+  z-index: 2;
+  transition: none;
+}
+
+.topHalf {
+  top: 0;
+  animation: curtainUp 1s cubic-bezier(0.77, 0, 0.175, 1) 1.1s forwards;
+}
+
+.bottomHalf {
+  bottom: 0;
+  animation: curtainDown 1s cubic-bezier(0.77, 0, 0.175, 1) 1.1s forwards;
+}
+
+@keyframes curtainUp {
+  to {
+    transform: translateY(-100%);
+  }
+}
+
+@keyframes curtainDown {
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.centerBand {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 2px;
+  background: #fff;
+  box-shadow: 0 0 24px 4px #fff, 0 0 8px 2px #fff;
+  border-radius: 1px;
+  z-index: 3;
+  transform-origin: left center;
+  animation: lineDraw 2s cubic-bezier(0.77, 0, 0.175, 1) 0.2s forwards,
+    lineFade 0.7s linear 2s forwards;
+  opacity: 0;
+  width: 100%;
+}
+
+@keyframes lineDraw {
+  from {
+    transform: translateY(-50%) scaleX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(-50%) scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes lineFade {
+  to {
+    opacity: 0;
+  }
+}
